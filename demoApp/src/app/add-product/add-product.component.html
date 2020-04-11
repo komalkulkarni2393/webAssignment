@@ -1,0 +1,20 @@
+<div class="container">
+		<div class="form-bg">
+			<form [formGroup]="addProductForm" (ngSubmit)="addProduct(addProductForm)" class="form-horizontal">
+				<h5 class="text-center">Add New Product</h5><br>
+				<div class="form-group">
+					<input type="number" formControlName="id" placeholder="Product ID">
+				</div>
+				<div class="form-group">
+					<input type="text" formControlName="productName" placeholder="Product Name">
+				</div>
+				<div class="form-group">
+					<input type="text" formControlName="productCategory" placeholder="Product Category">
+				</div>
+				<br>
+				<div class="align-center">
+					<input type="submit" value="Add product" [disabled]="!addProductForm.valid" class="btn btn-primary">
+				</div>
+			</form>
+	</div>
+</div>

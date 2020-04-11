@@ -1,0 +1,49 @@
+<div id="showProductsDiv">
+  <div>
+    <input type="text" placeholder="filter based on category" (change)="filterOnCategory($event)">
+    <button type="button" (click)="showProductsInCart()" class="btn btn-primary rightButton">Cart</button>
+  </div>
+  <br>
+  <table border="1" class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Product Category</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tr *ngFor="let item of products">
+      <td>{{item.id}}</td>
+      <td>{{item.productName}}</td>
+      <td>{{item.productCategory}}</td>
+      <td><input type="checkbox" (click)="selectProducts($event,item)"></td>
+    </tr>
+  </table>
+  <input type="button" value="Add to cart" (click)="addToCart()" class="btn btn-primary">
+  <button type="button" class="btn btn-primary rightButton">
+    <a [routerLink]="['/addProduct']" >Add new Product</a>
+  </button>
+  <hr>
+  <div *ngIf="!isCartEmpty; else cartIsEmpty">
+    <h5>Products in cart</h5>
+    <table border="1" class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Product Category</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let item of productsInCart">
+        <td>{{item.id}}</td>
+        <td>{{item.productName}}</td>
+        <td>{{item.productCategory}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <ng-template #cartIsEmpty>
+    Cart is empty
+  </ng-template>
+</div>
