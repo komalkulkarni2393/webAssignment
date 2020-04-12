@@ -74,13 +74,15 @@ export class ShowProductsComponent implements OnInit {
     });
   }
 
-  filterOnCategory(event){
-    console.log("filter on category called");
-    this.categoryToFilter = parseInt(event.target.value);
-    this.productService.getProductsOnCategory(this.categoryToFilter).subscribe(productsBasedOnCategory => {
-      this.productsBasedOnCategory = productsBasedOnCategory;
-    });
-    console.log("productsBasedOnCategory = "+this.productsBasedOnCategory);
-
+  filterOnCategory(){
+    if(this.category == "") {
+      this.getProducts();
+    }
+    else {
+      this.products = this.products.filter(result => {
+        return result.productCategory.match(this.category);
+        console.log(result);
+      })
+    }
   }
 }
