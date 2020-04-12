@@ -1,6 +1,6 @@
 <div id="showProductsDiv">
   <div>
-    <input type="text" placeholder="filter based on category" (change)="filterOnCategory($event)">
+    <input type="text" [(ngModel)]="category" placeholder="filter based on category" (input)="filterOnCategory()">
     <button type="button" (click)="showProductsInCart()" class="btn btn-primary rightButton">Cart</button>
   </div>
   <br>
